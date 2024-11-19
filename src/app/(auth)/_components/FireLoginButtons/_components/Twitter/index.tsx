@@ -60,12 +60,7 @@ function Twitter() {
             if (response.data.status === "success") {
                 dispatch(setUser(response.data.user));
                 toast.success(response.data.message);
-
-                if (response.data.user.newUser) {
-                    router.push("/new-user");
-                } else {
-                    router.push("/");
-                }
+                router.push("/");
             }
         } catch (error) {
             if (error instanceof AxiosError) {

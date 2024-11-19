@@ -3,7 +3,6 @@ export interface UserType {
     username: string;
     email: string;
     avatar: string;
-    newUser: boolean;
     isVerified: string;
     createdAt: Date;
     otpExpires?: Date;
