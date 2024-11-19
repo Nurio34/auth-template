@@ -10,7 +10,8 @@ import { initialFormData, FormType } from "@/type/form";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { writeForm, writeIsSubmitted } from "@/store/slices/auth";
 import FireLoginButtons from "./_components/FireLoginButtons";
-import WhatsupGifLogo from "./_components/WhatsupGifLogo";
+import Link from "next/link";
+import Image from "next/image";
 
 export const formControl = [
     {
@@ -51,6 +52,8 @@ function AuthClient() {
     const { errors, isLoading } = useAppSelector((s) => s.auth);
     const { user } = useAppSelector((s) => s.user);
     const dispatch = useAppDispatch();
+
+    const isSmallScreen = window.innerWidth < 768;
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setForm((pre) => {
@@ -95,7 +98,22 @@ function AuthClient() {
         <>
             {!user && pathCondition && (
                 <main className="  grid place-content-start justify-center pt-[2vh] md:pt-[4vh]">
-                    <WhatsupGifLogo />
+                    <Link
+                        href={"/"}
+                        className={`justify-self-center relative aspect-square rounded-full overflow-hidden
+                ${isSmallScreen ? "w-16" : "w-28"}    
+            `}
+                    >
+                        <Image
+                            src={
+                                process.env.NEXT_PUBLIC_LOGO ||
+                                "/logo-placeholder.svg"
+                            }
+                            fill
+                            alt="logo"
+                            priority
+                        />
+                    </Link>{" "}
                     <form onSubmit={handleSubmit}>
                         <fieldset>
                             <legend className="py-[2vh] text-xl font-light tracking-wider text-center">

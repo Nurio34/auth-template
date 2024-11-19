@@ -16,8 +16,7 @@ function FooterClient() {
         (path === "forget-password" && user) ||
         (path === "reset-password" && user) ||
         (path === "verify" && user?.isVerified) ||
-        (path === "verify" && !user) ||
-        (path === "new-user" && !user?.newUser);
+        (path === "verify" && !user);
 
     return (
         <footer
@@ -27,7 +26,7 @@ function FooterClient() {
         >
             <Link
                 href={"/"}
-                className="c-btn relative w-10 aspect-square rounded-full"
+                className=" relative w-10 aspect-square rounded-full"
             >
                 <Image
                     src={
